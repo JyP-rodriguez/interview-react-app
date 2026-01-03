@@ -2,7 +2,7 @@ name: Development Pipeline
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
@@ -37,3 +37,4 @@ jobs:
         action: upload
         app_location: my-app
         output_location: build
+
