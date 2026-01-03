@@ -2,7 +2,7 @@ name: Development Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ develop ]
 
 jobs:
   build-and-deploy:
@@ -12,12 +12,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
     - name: Install dependencies
       working-directory: my-app
       run: npm ci
 
     - name: Run tests
-      working-directory: interview-react-app/my-app
+      working-directory: my-app
       run: npm test -- --ci --coverage --watchAll=false
 
     - name: Build app
@@ -32,6 +37,3 @@ jobs:
         action: upload
         app_location: my-app
         output_location: build
-
-
-
