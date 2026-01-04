@@ -2,7 +2,7 @@ name: Development Pipeline
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ dev ]
 
 jobs:
   build-and-deploy:
@@ -28,11 +28,8 @@ jobs:
     - name: Deploy to Azure Static Web Apps
       uses: Azure/static-web-apps-deploy@v1
       with:
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-        repo_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLACK_PEBBLE_03CC1240F }}
+        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_DEV }}
+        repo_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_HAPPY_MUSHROOM_081DD300F }}
         action: upload
         app_location: my-app
         output_location: build
-
-
-
