@@ -2,7 +2,7 @@ name: Development Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ develop ]
 
 jobs:
   build-and-deploy:
@@ -25,10 +25,6 @@ jobs:
       working-directory: my-app
       run: npm test -- --ci --coverage --watchAll=false
 
-    - name: Build app
-      working-directory: my-app
-      run: npm run build
-
     - name: Deploy to Azure Static Web Apps
       uses: Azure/static-web-apps-deploy@v1
       with:
@@ -37,5 +33,6 @@ jobs:
         action: upload
         app_location: my-app
         output_location: build
+
 
 
